@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:http/http.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:practic/home_screen.dart';
-import 'package:practic/main.dart';
 
 class AboutDeveloper extends StatefulWidget {
-  AboutDeveloper({Key? key}) : super(key: key);
+  AboutDeveloper({Key key}) : super(key: key);
   @override
   _AboutDevState createState() => _AboutDevState();
 }

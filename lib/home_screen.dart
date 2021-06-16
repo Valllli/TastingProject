@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practic/about_developer.dart';
+
+import 'package:practic/todo_item.dart';
 import 'package:practic/todo_list_item.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key key}) : super(key: key);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> items = <String>[
-    "Milk",
-    "cucumber",
-  ];
+  final List<TodoItem> items = <TodoItem>[];
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-            ListTile(),
           ],
         ),
       ),
@@ -54,8 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(8),
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
+            final item = items[index];
             return TodoListItem(
-              name: items[index],
+              name: item.text,
+              isChecked: item.checked,
             );
           }),
       floatingActionButton: FloatingActionButton(
@@ -65,7 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
             context: context,
             barrierDismissible: false, // user must tap button!
             builder: (BuildContext context) {
-              var result;
+              String result;
+              //int index;
               return AlertDialog(
                 title: Text('Введите текст'),
                 content: TextField(
@@ -81,8 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   TextButton(
                     onPressed: () {
                       setState(() {
+                        final item = TodoItem(text: result, checked: false);
                         Navigator.of(context).pop('Ok');
-                        items.add(result);
+                        items.add(item);
                       });
                     },
                     child: const Text('Ok'),

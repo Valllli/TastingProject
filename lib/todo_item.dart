@@ -1,19 +1,17 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-import 'package:practic/todo_list_item.dart';
 
 class TodoItem {
   final bool checked;
   final String text;
 
-  TodoItem({required this.checked, required this.text});
-  TodoItem.fromJson(Map<bool, String> json)
-      : checked = json[true],
-        text = json['text'];
+  TodoItem({@required this.checked, @required this.text});
 
-  Map<bool, String> toJson() => {
-        'checked': checked,
-        'Text': text,
+  TodoItem.fromJson(Map<String, dynamic> json)
+      : text = json['text'],
+        checked = json['checked'] == 1;
+
+  Map<String, dynamic> toJson() => {
+        'checked': checked ? 1 : 0,
+        'text': text,
       };
 }
