@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 
-class TodoListItem extends StatefulWidget {
+class TodoListItem extends StatelessWidget {
   final String name;
   final bool isChecked;
-  TodoListItem({Key key, @required this.name, @required this.isChecked})
+  final ValueChanged<bool> onChanged;
+  TodoListItem(
+      {Key key,
+      @required this.name,
+      @required this.isChecked,
+      @required this.onChanged})
       : super(key: key);
-  @override
-  _TodoListItemState createState() => _TodoListItemState();
-}
-
-class _TodoListItemState extends State<TodoListItem> {
-  bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Checkbox(
-          value: _isChecked,
+          value: isChecked,
           checkColor: Colors.red,
           activeColor: Colors.white,
-          onChanged: (bool value) {
-            setState(() {
-              _isChecked = value;
-            });
-          },
+          onChanged: onChanged,
         ),
-        Text(widget.name),
+        Text(name),
       ],
     );
   }

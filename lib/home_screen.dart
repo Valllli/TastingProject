@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<TodoItem> items = <TodoItem>[];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,9 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (BuildContext context, int index) {
             final item = items[index];
             return TodoListItem(
-              name: item.text,
-              isChecked: item.checked,
-            );
+                name: item.text,
+                isChecked: item.checked,
+                onChanged: (bool value) {
+                  setState(() {
+                    final newItem = TodoItem(checked: value, text: item.text);
+                    items[index] = newItem;
+                  });
+                });
           }),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

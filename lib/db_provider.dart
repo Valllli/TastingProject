@@ -16,7 +16,7 @@ class DbProvider {
     );
   }
 
-  //Чтение в БД
+  //Чтение из БД
   Future<List<TodoItem>> readItems() async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('items');
