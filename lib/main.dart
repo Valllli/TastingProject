@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       title: 'Практическое задание',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.lightBlue,
         backgroundColor: Colors.blueAccent,
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
     );
   }

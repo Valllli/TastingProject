@@ -17,7 +17,7 @@ class TodoListItem extends StatelessWidget {
       children: <Widget>[
         Checkbox(
           value: isChecked,
-          checkColor: Colors.red,
+          checkColor: Colors.blue,
           activeColor: Colors.white,
           onChanged: onChanged,
         ),
